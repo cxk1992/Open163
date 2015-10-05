@@ -1,0 +1,28 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "scale" : "1x",
+      "filename" : "illustration02-Portrait~iphone.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "filename" : "illustration02-Portrait@2x~iphone.png"
+    },
+    {
+      "idiom" : "iphone",
+      "filename" : "illustration02-Portrait-568h@2x~iphone.png",
+      "subtype" : "retina4",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

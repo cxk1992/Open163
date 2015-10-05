@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOS Simulator Screen Shot 2015年9月6日 下午3.11.00.png" translatesAutoresizingMaskIntoConstraints="NO" id="C8Y-8L-Ym0">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="C8Y-8L-Ym0" secondAttribute="height" multiplier="1:1" id="shG-It-XT1"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="copyright_open" translatesAutoresizingMaskIntoConstraints="NO" id="9lP-i1-DXB">
+                    <rect key="frame" x="0.0" y="318" width="480" height="162"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="9lP-i1-DXB" secondAttribute="height" multiplier="640:216" id="lBB-Pr-dxR"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="9lP-i1-DXB" secondAttribute="trailing" id="1ic-AJ-3S3"/>
+                <constraint firstAttribute="bottom" secondItem="C8Y-8L-Ym0" secondAttribute="bottom" id="2pV-FP-LLz"/>
+                <constraint firstAttribute="trailing" secondItem="C8Y-8L-Ym0" secondAttribute="trailing" id="JsS-NX-42R"/>
+                <constraint firstItem="C8Y-8L-Ym0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NwH-Eu-FHG"/>
+                <constraint firstAttribute="bottom" secondItem="9lP-i1-DXB" secondAttribute="bottom" id="OLg-WY-lPI"/>
+                <constraint firstItem="C8Y-8L-Ym0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="cPu-n3-VUh"/>
+                <constraint firstItem="9lP-i1-DXB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gpH-SJ-iPA"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="573" y="447"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="copyright_open" width="320" height="108"/>
+        <image name="iOS Simulator Screen Shot 2015年9月6日 下午3.11.00.png" width="750" height="1334"/>
+    </resources>
+</document>

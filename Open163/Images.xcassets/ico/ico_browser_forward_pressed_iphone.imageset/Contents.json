@@ -1,0 +1,22 @@
+{
+  "images" : [
+    {
+      "idiom" : "iphone",
+      "scale" : "1x",
+      "filename" : "ico_browser_forward_pressed_iphone~iphone.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "filename" : "ico_browser_forward_pressed_iphone@2x~iphone.png"
+    },
+    {
+      "idiom" : "iphone",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

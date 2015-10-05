@@ -1,0 +1,18 @@
+{
+  "images" : [
+    {
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "num_pad~ipad.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "num_pad@2x~ipad.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
