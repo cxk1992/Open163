@@ -16,6 +16,8 @@
 {
     UICollectionView *_collectionView;
     NSMutableArray *_dataArray;
+    
+    UILabel *_refreshLabel;
 }
 @end
 
@@ -37,6 +39,8 @@
 }
 
 - (void)initCollectionView{
+    
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumInteritemSpacing = 5;
     layout.minimumLineSpacing = 5;
@@ -51,13 +55,20 @@
     _collectionView.dataSource = self;
     _collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_collectionView];
+    
+    _refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.view.frame.size.width, 30)];
+    _refreshLabel.text = @"准备加载";
+    _refreshLabel.textAlignment = NSTextAlignmentCenter;
+    _refreshLabel.textColor = [UIColor blackColor];
+    [_collectionView addSubview:_refreshLabel];
 }
 
 - (void)downloadData{
-    _dataArray = [NSMutableArray array];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
     [manager GET:kHomeUrlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        _dataArray = [NSMutableArray array];
         for (NSDictionary *dict in responseObject) {
             NSArray *arr = dict[@"vos"];
             NSMutableArray *cellArray = [NSMutableArray array];
@@ -71,8 +82,28 @@
             [_dataArray addObject:sectionDic];
         }
         [_collectionView reloadData];
+        [self endRefresh];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error.localizedDescription);
+        [self endRefresh];
+    }];
+}
+
+- (void)beginRefresh{
+    NSLog(@"%s",__FUNCTION__);
+    _collectionView.contentInset = UIEdgeInsetsMake(80, 0, 0, 0);
+    _refreshLabel.text = @"正在刷新";
+    [self downloadData];
+}
+
+-(void)endRefresh{
+    NSLog(@"%s",__FUNCTION__);
+    _refreshLabel.text = @"刷新完成";
+    [UIView animateWithDuration:0.3 animations:^{
+        _collectionView.contentOffset = CGPointMake(0, 0);
+    } completion:^(BOOL finished) {
+        _collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
+        _refreshLabel.text = @"准备加载";
     }];
 }
 
@@ -174,12 +205,11 @@
 }
 
 
-
-
-
-
-
-
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (scrollView.contentOffset.y<-80) {
+        [self beginRefresh];
+    }
+}
 
 
 
