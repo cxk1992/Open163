@@ -122,7 +122,15 @@
         imageView.tag = i+100;
         imageView.userInteractionEnabled = YES;
         [cell.scrollView addSubview:imageView];
-        HomeCellModel *model = arr[i];
+        HomeCellModel *model;
+//        if (i == 0) {
+//            model = arr[count - 3];
+//        }else if (i == count-1){
+//            model = arr[0];
+//        }else{
+//            model = arr[i-1];
+//        }
+        model = arr[i];
         [cell.titleArray addObject:model.title];
         [imageView sd_setImageWithURL:[NSURL URLWithString:model.picUrl]];
     }

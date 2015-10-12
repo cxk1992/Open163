@@ -163,10 +163,14 @@
 }
 
 - (void)updateData{
-    [self selected];
-    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
-    [_tableView setContentOffset:CGPointMake(0, 0)];
-    [_tableView.tableHeaderView addSubview:_selectView];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self selected];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+            [_tableView setContentOffset:CGPointMake(0, 0)];
+            [_tableView.tableHeaderView addSubview:_selectView];
+        });
+    });
 }
 
 - (void)selected{

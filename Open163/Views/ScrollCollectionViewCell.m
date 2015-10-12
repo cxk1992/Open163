@@ -52,6 +52,13 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSInteger index = scrollView.contentOffset.x/scrollView.bounds.size.width;
+//    if (index == 0) {
+//        index = _titleArray.count-1;
+//        [scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*(index+1), 0) animated:NO];
+//    }else if (index == _titleArray.count){
+//        index = 0;
+//        [scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*(index+1), 0) animated:NO];
+//    }
     self.pageControl.currentPage = index;
     self.titleLabel.text = self.titleArray[index];
     [_timer invalidate];
