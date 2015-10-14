@@ -18,6 +18,7 @@
 #import "DBManager.h"
 #import "DownloadViewController.h"
 #import <Social/Social.h>
+#import "ReportViewController.h"
 
 
 @interface PlayerViewController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UIAlertViewDelegate>
@@ -249,7 +250,20 @@
         AppDelegate *delegate = [UIApplication sharedApplication].delegate;
         [((UINavigationController *)delegate.window.rootViewController) pushViewController:downloadVC animated:YES];
     }else if (tag == 2){
+        [SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook] ? NSLog(@"ok"):NSLog(@"fail");
         
+//        SLComposeViewController *cc = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTencentWeibo];
+//        [cc setInitialText:@"分享至腾讯微博"];
+//        
+//        [self presentViewController:cc animated:YES completion:^{
+//            
+//        }];
+        
+        
+    } else if (tag == 3){
+        ReportViewController *vc = [[ReportViewController alloc] init];
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        [((UINavigationController *)delegate.window.rootViewController) pushViewController:vc animated:YES];
     }
     
 }

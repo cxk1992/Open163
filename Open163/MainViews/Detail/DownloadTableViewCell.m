@@ -7,11 +7,20 @@
 //
 
 #import "DownloadTableViewCell.h"
+#import "DownloadManager.h"
+
 
 @implementation DownloadTableViewCell
+{
+    NSURLConnection *_connection;
+}
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+- (IBAction)downloadAction:(id)sender {
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

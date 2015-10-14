@@ -48,6 +48,12 @@
     [self getData];
 }
 
+- (void)downloadAction:(UIButton *)btn{
+    DownloadTableViewCell *cell = (DownloadTableViewCell *)btn.superview.superview;
+    DownloadManager *manager = [DownloadManager shareManager];
+    [manager startDownloadWithTitle:cell.courseTitle andCourseName:cell.titleLabel.text];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
@@ -72,6 +78,7 @@
     cell.courseTitle = _downloadList.allKeys[indexPath.section];
     cell.titleLabel.text = [_downloadList[cell.courseTitle] allKeys][indexPath.row];
     [cell.deleteBtn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.downloadBtn addTarget:self action:@selector(downloadAction:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 

@@ -10,10 +10,13 @@
 #import "EventView.h"
 #import "AllCourseModel.h"
 #import "AppDelegate.h"
+#import <MapKit/MapKit.h>
 
 
-@interface MainViewController () <UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate>
+@interface MainViewController () <UIPageViewControllerDataSource,UIPageViewControllerDelegate,UIScrollViewDelegate,CLLocationManagerDelegate>
 {
+    CLLocationManager *_locationManager;
+    
     NSMutableArray *_viewsArray;
     UISegmentedControl *_titleSegment;
     UIPageViewController *_pageVC;
@@ -32,6 +35,13 @@
     [self initViews];
     [self createUI];
     [self downloadData];
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager requestWhenInUseAuthorization];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.distanceFilter = 100;
+    [_locationManager startUpdatingLocation];
     
     NSLog(@"%@",NSHomeDirectory());
 }
@@ -170,6 +180,13 @@
     _currentPage = [_viewsArray indexOfObject:_pageVC.viewControllers[0]];
     [self adjustIndicatorView];
     
+}
+
+#pragma mark locationDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    [_locationManager stopUpdatingLocation];
+    NSLog(@"%@",locations);
 }
 
 

@@ -20,6 +20,8 @@ typedef void(^getResponse)(NSURLResponse *response);
 
 - (BOOL)deleteMissionWithTitle:(NSString *)title andSubTitle:(NSString *)subTitle;
 
+- (void)startDownloadWithTitle:(NSString *)title andCourseName:(NSString *)courseName;
+
 - (NSDictionary *)downloadList;
 
 - (NSDictionary *)completeList;

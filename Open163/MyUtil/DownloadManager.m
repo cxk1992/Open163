@@ -20,6 +20,7 @@
 @implementation DownloadManager
 {
     NSFileManager *_fileManager;
+    NSMutableDictionary *_downloadingDic;
 }
 
 - (instancetype)init{
@@ -52,7 +53,7 @@
         [_downloadInfo setValue:[NSMutableDictionary dictionary] forKey:@"downloadList"];
         [_downloadInfo writeToFile:[_downloadPath stringByAppendingPathComponent:@"DownloadInfo.plist"] atomically:YES];
     }
-    
+    _downloadingDic = [NSMutableDictionary dictionary];
 }
 
 - (void)addDownloadMissionWithTitle:(NSString *)title andDictionary:(NSDictionary *)dict{
@@ -97,6 +98,10 @@
 
 - (NSDictionary *)completeList{
     return [_downloadInfo[@"completeList"] copy];
+}
+
+- (void)startDownloadWithTitle:(NSString *)title andCourseName:(NSString *)courseName{
+    NSLog(@"%@",_downloadInfo[@"downloadList"][title][courseName]);
 }
 
 @end

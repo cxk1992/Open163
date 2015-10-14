@@ -13,7 +13,7 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ru3-h8-yAU">
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ru3-h8-yAU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <animations/>
                     </scrollView>
@@ -50,8 +50,11 @@
             </view>
             <animations/>
             <constraints>
+                <constraint firstItem="Ru3-h8-yAU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7aa-9C-LbC"/>
+                <constraint firstAttribute="trailing" secondItem="Ru3-h8-yAU" secondAttribute="trailing" id="8Gb-hd-ch0"/>
                 <constraint firstItem="NSG-OF-B6d" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="8Rs-xX-gaB"/>
                 <constraint firstAttribute="bottom" secondItem="NSG-OF-B6d" secondAttribute="bottom" constant="3" id="Bj2-dW-XZY"/>
+                <constraint firstAttribute="bottom" secondItem="Ru3-h8-yAU" secondAttribute="bottom" id="GfE-aI-KUj"/>
                 <constraint firstAttribute="bottom" secondItem="eOa-qI-1TL" secondAttribute="bottom" constant="-3" id="NFU-2j-bg7"/>
                 <constraint firstAttribute="trailing" secondItem="sNw-HU-8ym" secondAttribute="trailing" id="Smi-EH-Glq"/>
                 <constraint firstItem="NSG-OF-B6d" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="172" id="U1j-Nf-Yh4"/>
@@ -59,6 +62,7 @@
                 <constraint firstItem="sNw-HU-8ym" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="dSu-Dd-rWG"/>
                 <constraint firstAttribute="bottom" secondItem="sNw-HU-8ym" secondAttribute="bottom" id="gYi-oi-OYd"/>
                 <constraint firstAttribute="trailing" secondItem="eOa-qI-1TL" secondAttribute="trailing" constant="20" id="txl-wi-Urw"/>
+                <constraint firstItem="Ru3-h8-yAU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vTk-hr-Blw"/>
             </constraints>
             <connections>
                 <outlet property="pageControl" destination="eOa-qI-1TL" id="T6U-E1-5gW"/>

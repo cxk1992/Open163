@@ -10,16 +10,20 @@
 #import "AppDelegate.h"
 #import "SelectViewController.h"
 #import "HistoryViewController.h"
+#import <MapKit/MapKit.h>
+
 
 @interface BaseViewController ()
-
+{
+    CLLocationManager *_locationManager;
+}
 @end
 
 @implementation BaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.    
 }
 
 - (void)didReceiveMemoryWarning {

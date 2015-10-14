@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReportViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLz-68-rDJ">
+                    <rect key="frame" x="8" y="434" width="584" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="BX6-ne-xjU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="提交"/>
+                </button>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DD2-GC-tNh">
+                    <rect key="frame" x="8" y="140" width="584" height="260"/>
+                    <animations/>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GiE-go-NYs">
+                    <rect key="frame" x="8" y="510" width="584" height="40"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Lkl-n6-utk"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                    <state key="normal" title="放弃"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="问题描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-uv-QBC">
+                    <rect key="frame" x="8" y="67" width="68" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Zlf-sn-ROt"/>
+                        <constraint firstAttribute="width" constant="68" id="jw4-B7-jul"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="DD2-GC-tNh" secondAttribute="bottom" constant="200" id="20y-hp-3Nx"/>
+                <constraint firstAttribute="trailing" secondItem="DD2-GC-tNh" secondAttribute="trailing" constant="8" id="5vZ-Hy-KMP"/>
+                <constraint firstAttribute="trailing" secondItem="GiE-go-NYs" secondAttribute="trailing" constant="8" id="Fpx-CB-YYd"/>
+                <constraint firstItem="DD2-GC-tNh" firstAttribute="top" secondItem="FYB-uv-QBC" secondAttribute="bottom" constant="52" id="Mb6-y2-mzx"/>
+                <constraint firstItem="FYB-uv-QBC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="Vco-6V-9Yd"/>
+                <constraint firstAttribute="bottom" secondItem="vLz-68-rDJ" secondAttribute="bottom" constant="126" id="ZqW-uc-KBP"/>
+                <constraint firstItem="vLz-68-rDJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="dOW-ES-nPA"/>
+                <constraint firstItem="DD2-GC-tNh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="fJZ-3s-Qqf"/>
+                <constraint firstAttribute="trailing" secondItem="vLz-68-rDJ" secondAttribute="trailing" constant="8" id="gdg-k5-9JI"/>
+                <constraint firstItem="FYB-uv-QBC" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="67" id="np0-Q2-TrB"/>
+                <constraint firstItem="GiE-go-NYs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="pF9-EA-vlS"/>
+                <constraint firstAttribute="bottom" secondItem="GiE-go-NYs" secondAttribute="bottom" constant="50" id="zys-9b-aaA"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

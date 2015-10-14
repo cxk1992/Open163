@@ -11,6 +11,7 @@
 #import "HomeCellModel.h"
 #import "HeaderCollectionReusableView.h"
 #import "ScrollCollectionViewCell.h"
+#import "MJRefresh.h"
 
 @interface HomeViewController () <UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 {
@@ -39,8 +40,6 @@
 }
 
 - (void)initCollectionView{
-    
-    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.minimumInteritemSpacing = 5;
     layout.minimumLineSpacing = 5;
@@ -56,11 +55,14 @@
     _collectionView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_collectionView];
     
-    _refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.view.frame.size.width, 30)];
-    _refreshLabel.text = @"准备加载";
-    _refreshLabel.textAlignment = NSTextAlignmentCenter;
-    _refreshLabel.textColor = [UIColor blackColor];
-    [_collectionView addSubview:_refreshLabel];
+    _collectionView.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(beginRefresh)];
+    [_collectionView.header beginRefreshing];
+    
+//    _refreshLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, -50, self.view.frame.size.width, 30)];
+//    _refreshLabel.text = @"准备加载";
+//    _refreshLabel.textAlignment = NSTextAlignmentCenter;
+//    _refreshLabel.textColor = [UIColor blackColor];
+//    [_collectionView addSubview:_refreshLabel];
 }
 
 - (void)downloadData{
@@ -98,6 +100,7 @@
 
 -(void)endRefresh{
     NSLog(@"%s",__FUNCTION__);
+    [_collectionView.header endRefreshing];
     _refreshLabel.text = @"刷新完成";
     [UIView animateWithDuration:0.3 animations:^{
         _collectionView.contentOffset = CGPointMake(0, 0);
@@ -146,7 +149,7 @@
 }
 
 - (void)dealloc{
-    
+    _collectionView.header = nil;
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -213,11 +216,11 @@
 }
 
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (scrollView.contentOffset.y<-80) {
-        [self beginRefresh];
-    }
-}
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+//    if (scrollView.contentOffset.y<-80) {
+//        [self beginRefresh];
+//    }
+//}
 
 
 
