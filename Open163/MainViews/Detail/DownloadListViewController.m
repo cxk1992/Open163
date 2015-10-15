@@ -8,11 +8,12 @@
 
 #import "DownloadListViewController.h"
 #import "DownloadManager.h"
-#import "DownloadTableViewCell.h"
+#import "DownloadViewCell.h"
 
-@interface DownloadListViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface DownloadListViewController ()
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @property (nonatomic,strong) NSDictionary * downloadList;
 
@@ -28,30 +29,44 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self configTableView];
     [self getData];
 }
 
-- (void)configTableView{
-    [_tableView registerNib:[UINib nibWithNibName:@"DownloadTableViewCell" bundle:nil] forCellReuseIdentifier:@"downloadCell"];
+- (void)updateListView{
+    for (UIView *view in self.scrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    [self getData];
 }
 
 - (void)getData{
     _downloadList = [[DownloadManager shareManager] downloadList];
     _completeList = [[DownloadManager shareManager] completeList];
-    [_tableView reloadData];
+    [self showDownloadList];
 }
 
-- (void)deleteAction:(UIButton *)btn{
-    DownloadTableViewCell *cell = (DownloadTableViewCell *)btn.superview.superview;
-    [[DownloadManager shareManager] deleteMissionWithTitle:cell.courseTitle andSubTitle:cell.titleLabel.text];
-    [self getData];
-}
-
-- (void)downloadAction:(UIButton *)btn{
-    DownloadTableViewCell *cell = (DownloadTableViewCell *)btn.superview.superview;
-    DownloadManager *manager = [DownloadManager shareManager];
-    [manager startDownloadWithTitle:cell.courseTitle andCourseName:cell.titleLabel.text];
+- (void)showDownloadList{
+    CGFloat y = 0;
+    CGFloat h = 44;
+    NSArray *keys = _downloadList.allKeys;
+    for (NSInteger i=0; i<keys.count; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, y, [UIScreen mainScreen].bounds.size.width, h)];
+        y += h;
+        label.text = keys[i];
+        label.font = [UIFont systemFontOfSize:13];
+        [self.scrollView addSubview:label];
+        NSLog(@"%@",_downloadList[label.text]);
+        for (NSInteger j=0; j<[_downloadList[keys[i]] count]; j++) {
+            NSString *key = [_downloadList[keys[i]] allKeys][j];
+            DownloadViewCell *view = [[DownloadViewCell alloc] initWithFrame:CGRectMake(0, y, [UIScreen mainScreen].bounds.size.width, h)];
+            y += h;
+            view.titleLabel.text = key;
+            view.title = keys[i];
+            view.delegate = self;
+            [self.scrollView addSubview:view];
+        }
+    }
+    self.scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, y + h);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,38 +78,5 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark -UItableView
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _downloadList.allKeys.count;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [_downloadList[_downloadList.allKeys[section]] allKeys].count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DownloadTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"downloadCell" forIndexPath:indexPath];
-    cell.courseTitle = _downloadList.allKeys[indexPath.section];
-    cell.titleLabel.text = [_downloadList[cell.courseTitle] allKeys][indexPath.row];
-    [cell.deleteBtn addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.downloadBtn addTarget:self action:@selector(downloadAction:) forControlEvents:UIControlEventTouchUpInside];
-    return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 30)];
-    label.text = _downloadList.allKeys[section];
-    label.font = [UIFont systemFontOfSize:14];
-    return label;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 30;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return UITableViewCellEditingStyleDelete|UITableViewCellEditingStyleInsert;
-}
 
 @end

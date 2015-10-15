@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadListViewController">
             <connections>
-                <outlet property="tableView" destination="MXm-Z3-LV9" id="0kc-3N-5pQ"/>
+                <outlet property="scrollView" destination="pDb-qv-I2h" id="Iyq-bb-eno"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,36 +18,32 @@
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_me_green" translatesAutoresizingMaskIntoConstraints="NO" id="fHF-2F-khD">
                     <rect key="frame" x="0.0" y="20" width="600" height="40"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="AtH-UN-GUf"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下载详情" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYX-ge-ttH">
                     <rect key="frame" x="270" y="29" width="60" height="21"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="UkL-iP-5gh"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="MXm-Z3-LV9">
-                    <rect key="frame" x="0.0" y="90" width="600" height="510"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="uGY-PH-QFT"/>
-                        <outlet property="delegate" destination="-1" id="2g1-26-Lhm"/>
-                    </connections>
-                </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-Zf-2ht">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-Zf-2ht">
                     <rect key="frame" x="0.0" y="60" width="300" height="30"/>
+                    <animations/>
                     <state key="normal" title="正在下载">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-X7-jFJ">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-X7-jFJ">
                     <rect key="frame" x="300" y="60" width="300" height="30"/>
+                    <animations/>
                     <state key="normal" title="完成下载">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -54,6 +51,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxK-KU-stR">
                     <rect key="frame" x="25" y="25" width="30" height="30"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="b9o-vw-uyg"/>
                     </constraints>
@@ -65,29 +63,32 @@
                         <action selector="closeAction:" destination="-1" eventType="touchUpInside" id="uV1-S4-IDD"/>
                     </connections>
                 </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDb-qv-I2h">
+                    <rect key="frame" x="0.0" y="94" width="600" height="506"/>
+                    <animations/>
+                </scrollView>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="MXm-Z3-LV9" firstAttribute="top" secondItem="mhi-X7-jFJ" secondAttribute="bottom" id="5kz-1s-eOA"/>
                 <constraint firstItem="mhi-X7-jFJ" firstAttribute="leading" secondItem="Sbh-Zf-2ht" secondAttribute="trailing" id="Ah8-4E-I76"/>
                 <constraint firstItem="fHF-2F-khD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="DJE-bV-Kdf"/>
                 <constraint firstItem="Sbh-Zf-2ht" firstAttribute="width" secondItem="mhi-X7-jFJ" secondAttribute="width" id="Da0-d9-hIJ"/>
                 <constraint firstItem="mhi-X7-jFJ" firstAttribute="leading" secondItem="Sbh-Zf-2ht" secondAttribute="trailing" id="GBa-Op-s9H"/>
-                <constraint firstItem="MXm-Z3-LV9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="GTb-yR-xHj"/>
-                <constraint firstAttribute="trailing" secondItem="MXm-Z3-LV9" secondAttribute="trailing" id="KOF-fZ-92m"/>
                 <constraint firstItem="Sbh-Zf-2ht" firstAttribute="top" secondItem="fHF-2F-khD" secondAttribute="bottom" id="N8n-Ja-3I5"/>
-                <constraint firstAttribute="bottom" secondItem="MXm-Z3-LV9" secondAttribute="bottom" id="Rry-Bd-F9C"/>
                 <constraint firstItem="fHF-2F-khD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SDe-BC-0zJ"/>
+                <constraint firstAttribute="bottom" secondItem="pDb-qv-I2h" secondAttribute="bottom" id="XVB-Yb-Jpk"/>
                 <constraint firstAttribute="trailing" secondItem="mhi-X7-jFJ" secondAttribute="trailing" id="ZzW-HH-7pT"/>
+                <constraint firstAttribute="trailing" secondItem="pDb-qv-I2h" secondAttribute="trailing" id="bpf-rc-ogW"/>
+                <constraint firstItem="pDb-qv-I2h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="c6X-Tx-g1G"/>
                 <constraint firstItem="Sbh-Zf-2ht" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gkN-rw-8fs"/>
+                <constraint firstItem="pDb-qv-I2h" firstAttribute="top" secondItem="mhi-X7-jFJ" secondAttribute="bottom" id="hVk-z5-rsf"/>
                 <constraint firstItem="JYX-ge-ttH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="29" id="l1c-Nr-8bH"/>
                 <constraint firstItem="MxK-KU-stR" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="25" id="noX-rG-nJa"/>
-                <constraint firstItem="MXm-Z3-LV9" firstAttribute="top" secondItem="Sbh-Zf-2ht" secondAttribute="bottom" id="qEb-Ln-U72"/>
                 <constraint firstAttribute="trailing" secondItem="fHF-2F-khD" secondAttribute="trailing" id="qaa-eQ-PVc"/>
                 <constraint firstItem="mhi-X7-jFJ" firstAttribute="top" secondItem="fHF-2F-khD" secondAttribute="bottom" id="sup-pd-X5d"/>
                 <constraint firstAttribute="centerX" secondItem="JYX-ge-ttH" secondAttribute="centerX" id="wDH-Ze-KXv"/>
                 <constraint firstItem="MxK-KU-stR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="wxj-Wl-WH2"/>
-                <constraint firstItem="MXm-Z3-LV9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="ygY-CM-1A7"/>
             </constraints>
             <point key="canvasLocation" x="283" y="161"/>
         </view>

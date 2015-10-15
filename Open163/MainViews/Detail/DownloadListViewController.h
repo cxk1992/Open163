@@ -10,4 +10,6 @@
 
 @interface DownloadListViewController : UIViewController
 
+- (void)updateListView;
+
 @end

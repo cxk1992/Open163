@@ -21,6 +21,8 @@
 {
     NSFileManager *_fileManager;
     NSMutableDictionary *_downloadingDic;
+    
+    NSInteger downloadCount;
 }
 
 - (instancetype)init{

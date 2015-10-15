@@ -115,7 +115,7 @@
         return;
     }
     cell.showed = YES;
-    CGFloat width = cell.scrollView.bounds.size.width;
+    CGFloat width = cell.bounds.size.width;
     NSArray *arr = _dataArray[indexpath.section][@"vos"];
     NSInteger count = arr.count;
     for (NSInteger i=0; i<count; i++) {
