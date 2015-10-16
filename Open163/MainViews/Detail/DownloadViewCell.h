@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "DownloadListViewController.h"
+#import "DownloadManager.h"
 
-@interface DownloadViewCell : UIView
+@interface DownloadViewCell : UIView <DownloadDelegat>
 
 @property (nonatomic,weak) DownloadListViewController *delegate;
 
 @property (nonatomic,copy)NSString *title;
+
+@property (nonatomic,copy)NSString *urlString;
 
 @property (nonatomic,strong) UILabel *titleLabel;
 

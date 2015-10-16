@@ -8,11 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^success)(NSString *filePath,NSString *urlString);
+typedef void(^success)(NSData *receiveData);
 typedef void(^fail)(NSString *filePath,NSString *urlString);
 typedef void(^getResponse)(NSURLResponse *response);
+typedef void(^saveData)(float f);
 
+@class Downloader;
 @interface DownloadManager : NSObject
+
+
+
+@property (nonatomic,strong,readonly) NSString * downloadPath;
 
 + (DownloadManager *)shareManager;
 
@@ -20,7 +26,15 @@ typedef void(^getResponse)(NSURLResponse *response);
 
 - (BOOL)deleteMissionWithTitle:(NSString *)title andSubTitle:(NSString *)subTitle;
 
-- (void)startDownloadWithTitle:(NSString *)title andCourseName:(NSString *)courseName;
+- (void)completeDownloadMissionWithTitle:(NSString *)title andSubtitle:(NSString *)subtitle urlstring:(NSString *)urlstring;
+
+- (void)startADownloadMissionWithUrlstring:(NSString *)urlstring andDownloader:(Downloader *)downloader;
+
+- (void)cancelADownloadMissionWithUrlString:(NSString *)urlString;
+
+- (Downloader *)getDownloaderWithUrlstring:(NSString *)urlString;
+
+- (BOOL)allowToDownload;
 
 - (NSDictionary *)downloadList;
 
@@ -28,15 +42,24 @@ typedef void(^getResponse)(NSURLResponse *response);
 
 @end
 
+@protocol DownloadDelegat <NSObject>
 
+- (void)downloadSuccess:(NSData *)receiveData;
+
+- (void)downloadChangeDatalength:(float)f;
+
+@end
 
 @interface Downloader : NSObject
 
 @property (nonatomic,strong) success successBlock;
 @property (nonatomic,strong) fail failBlock;
 @property (nonatomic,strong) getResponse responseBlock;
+@property (nonatomic,strong) saveData saveBlock;
 
-- (void)downloadWithURLString:(NSString *)urlString andPath:(NSString *)filePath successBlock:(success)successBlock failBlock:(fail)failureBlock response:(getResponse)responseBlock;
+@property (nonatomic,weak) id <DownloadDelegat> delegate;
+
+- (void)downloadWithURLString:(NSString *)urlString andPath:(NSString *)filePath successBlock:(success)successBlock failBlock:(fail)failureBlock response:(getResponse)responseBlock saveData:(saveData)saveBlock;
 
 - (void)startDownload;
 

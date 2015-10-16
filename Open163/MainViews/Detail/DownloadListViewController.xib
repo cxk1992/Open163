@@ -7,6 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadListViewController">
             <connections>
+                <outlet property="completeSelectBtn" destination="mhi-X7-jFJ" id="QkN-NR-QhL"/>
+                <outlet property="downloadSelectBtn" destination="Sbh-Zf-2ht" id="sB6-eq-lDt"/>
                 <outlet property="scrollView" destination="pDb-qv-I2h" id="Iyq-bb-eno"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -33,21 +35,27 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-Zf-2ht">
-                    <rect key="frame" x="0.0" y="60" width="300" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sbh-Zf-2ht">
+                    <rect key="frame" x="0.0" y="60" width="300" height="34"/>
                     <animations/>
                     <state key="normal" title="正在下载">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="downloadSelectAction:" destination="-1" eventType="touchUpInside" id="rlo-TK-WFh"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-X7-jFJ">
-                    <rect key="frame" x="300" y="60" width="300" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhi-X7-jFJ">
+                    <rect key="frame" x="300" y="60" width="300" height="34"/>
                     <animations/>
                     <state key="normal" title="完成下载">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="completeSelectAction:" destination="-1" eventType="touchUpInside" id="7mb-8X-bg0"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MxK-KU-stR">
                     <rect key="frame" x="25" y="25" width="30" height="30"/>
