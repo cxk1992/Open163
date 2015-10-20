@@ -11,7 +11,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (nonatomic,strong) NSMutableArray * allData;
+@property (nonatomic,strong) NSArray * allData;
 
 @property (nonatomic,assign) BOOL allowLandscape;
 

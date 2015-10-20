@@ -39,6 +39,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="放弃"/>
+                    <connections>
+                        <action selector="backAction:" destination="-1" eventType="touchUpInside" id="CTw-6A-gWI"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="问题描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYB-uv-QBC">
                     <rect key="frame" x="8" y="67" width="68" height="21"/>

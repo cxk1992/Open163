@@ -9,6 +9,8 @@
 #import "DownloadViewCell.h"
 #import "DownloadManager.h"
 #import "DownloadListViewController.h"
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface DownloadViewCell () <UIAlertViewDelegate>
 
@@ -77,8 +79,10 @@
         [btn setTitle:@"下载" forState:UIControlStateNormal];
         Downloader *downloader = [[DownloadManager shareManager] getDownloaderWithUrlstring:self.urlString];
         [downloader stopDownload];
-    }else {
-        
+    }else if ([btn.currentTitle isEqualToString:@"播放"]){
+        NSString *filePath = [[[DownloadManager shareManager] downloadPath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@/%@.mp4",self.title,self.titleLabel.text]];
+        MPMoviePlayerViewController *plyerVC = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL fileURLWithPath:filePath]];
+        [self.delegate presentViewController:plyerVC animated:NO completion:nil];
     }
 }
 

@@ -57,7 +57,7 @@
 }
 
 - (void)showCompleteList{
-    NSLog(@"%@",_completeList);
+//    NSLog(@"%@",_completeList);
     CGFloat y = 0;
     CGFloat h = 44;
     NSArray *keys = _completeList.allKeys;
@@ -74,7 +74,7 @@
             y += h;
             view.titleLabel.text = key;
             view.title = keys[i];
-            [view.downloadBtn setTitle:@"完成" forState:UIControlStateNormal];
+            [view.downloadBtn setTitle:@"播放" forState:UIControlStateNormal];
             view.delegate = self;
             [self.scrollView addSubview:view];
         }

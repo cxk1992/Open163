@@ -80,27 +80,35 @@
 }
 
 - (void)downloadData{
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html", nil];
     [manager GET:kAllCourseUrlString parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSMutableArray *  dataArray = [NSMutableArray array];
-        NSMutableArray *muArray = [NSMutableArray array];
-        for (NSDictionary *dict in responseObject) {
-            AllCourseModel *model = [[AllCourseModel alloc] init];
-            [model setValuesForKeysWithDictionary:dict];
-            if ([muArray containsObject:model.plid]) {
-                continue;
-            }
-            [muArray addObject:model.plid];
-            [dataArray addObject:model];
-        }
-        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-        delegate.allData = [dataArray copy];
+        delegate.allData = [self parseAllCourseData:responseObject];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"completeDownloadData" object:delegate.allData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error.localizedDescription);
     }];
+}
+
+- (NSString *)allCourseStorePath{
+    return  [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/allCourse.plist"];
+}
+
+- (NSArray *)parseAllCourseData:(id)responseObject{
+    NSMutableArray *  dataArray = [NSMutableArray array];
+    NSMutableArray *muArray = [NSMutableArray array];
+    for (NSDictionary *dict in responseObject) {
+        AllCourseModel *model = [[AllCourseModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        if ([muArray containsObject:model.plid]) {
+            continue;
+        }
+        [muArray addObject:model.plid];
+        [dataArray addObject:model];
+    }
+    return [dataArray copy];
 }
 
 - (void)initViews{
